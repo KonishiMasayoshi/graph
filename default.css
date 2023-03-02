@@ -1,0 +1,130 @@
+@charset "utf-8";
+
+/*----------------------------- graph -----------------------------*/
+.pl_graph::after{
+	content:"";
+	display:block;
+	clear:both;
+	height:0;
+	visibility:hidden;
+}
+
+.pl_graph_parent{
+	width:calc(100% - 120px);
+	width:-ms-calc(100% - 120px);
+	width:-webkit-calc(100% - 120px);
+	width:-moz-calc(100% - 120px);
+	width:-o-calc(100% - 120px);
+	height:300px;
+	float:left;
+	position:relative;
+	overflow:hidden;
+}
+
+.pl_graph_parent > canvas:nth-of-type(2){
+	cursor:crosshair;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:1;
+}
+
+.pl_graph_side_number_parent{
+	width:120px;
+	height:300px;
+	border-left:solid #333 1px;
+	float:left;
+	position:relative;
+}
+
+.pl_graph_side_number_parent > canvas:nth-of-type(2){
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:1;
+}
+
+.pl_graph_vertical_label_parent{
+	width:calc(100% - 120px);
+	width:-ms-calc(100% - 120px);
+	width:-webkit-calc(100% - 120px);
+	width:-moz-calc(100% - 120px);
+	width:-o-calc(100% - 120px);
+	height:30px;
+	border-top:solid #333 1px;
+	clear:both;
+	position:relative;
+}
+
+.pl_graph_vertical_label_parent > canvas:nth-of-type(2){
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:1;
+}
+
+.pl_graph_event_trigger{
+	width:10px;
+	height:10px;
+	margin:-5px auto auto -5px;
+	background:#AAA;
+	border:solid #666 2px;
+	border-radius:50%;
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+	position:absolute;
+	z-index:2;
+	display:block;
+	cursor:pointer;
+}
+
+.pl_graph_item_navi_list::after, 
+.pl_graph_mark_navi_list::after{
+	content:"";
+	display:block;
+	clear:both;
+	height:0;
+	visibility:hidden;
+}
+
+.pl_graph_item_navi_list > li, 
+.pl_graph_mark_navi_list > li{
+	float:left;
+}
+
+.pl_graph_item_navi_trigger, 
+.pl_graph_mark_navi_trigger{
+	margin:0 5px;
+	font-size:14px;
+	line-height:20px;
+}
+
+.pl_graph_item_navi_trigger > *, 
+.pl_graph_mark_navi_trigger > *{
+	cursor:pointer;
+}
+
+@media screen and (max-width:950px){
+	.pl_graph_parent{
+		width:calc(100% - 90px);
+		width:-ms-calc(100% - 90px);
+		width:-webkit-calc(100% - 90px);
+		width:-moz-calc(100% - 90px);
+		width:-o-calc(100% - 90px);
+		height:180px;
+	}
+	
+	.pl_graph_side_number_parent{
+		width:90px;
+		height:180px;
+	}
+	
+	.pl_graph_vertical_label_parent{
+		width:calc(100% - 90px);
+		width:-ms-calc(100% - 90px);
+		width:-webkit-calc(100% - 90px);
+		width:-moz-calc(100% - 90px);
+		width:-o-calc(100% - 90px);
+	}
+}
+/*----------------------------- /graph -----------------------------*/

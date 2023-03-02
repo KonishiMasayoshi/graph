@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>jQueryプラグイン - スクロールエフェクト</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="css/default.css">
+<!-- plugin -->
+<link rel="stylesheet" href="plugin/scroll_effect/default.css">
+</head>
+<body>
+	<main id="container">
+		<section style="margin:1000px auto;">
+			<img src="img/image.jpg" width="300" height="250" loading="lazy" class="scroll_effect" data-scroll-effect-animation-name="animatio_bounce" data-scroll-effect-animation-delay="2s">
+		</section>
+		<section style="margin:1000px auto;">
+			<img src="img/image.jpg" width="300" height="250" loading="lazy" class="scroll_effect" data-scroll-effect-animation-name="animatio_bounce" data-scroll-effect-animation-delay="2s" data-scroll-effect-animation-iteration-count="4">
+		</section>
+	</main>
+	
+	<!-- lib -->
+	<script src="libs/jquery/3.6.0/jquery.min.js"></script>
+	
+	<!-- plugin -->
+	<script src="plugin/scroll_effect/jquery.scrollEffect.js"></script>
+	<script>
+(function($){
+	$(document).ready(function(){
+		const 
+		configs = {
+			elementTarget:'.scroll_effect' 		//対象の要素
+		};
+		$('.scroll_effect').scrollEffect(configs);
+	});
+})(jQuery);
+	</script>
+</body>
+</html>
