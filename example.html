@@ -2,38 +2,171 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<title>jQueryプラグイン - スクロールエフェクト</title>
+<title>jQueryプラグイン - canvasタグへグラフを描写する為のプラグイン</title>
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="format-detection" content="telephone=no">
 <link rel="stylesheet" href="css/default.css">
 <!-- plugin -->
-<link rel="stylesheet" href="plugin/scroll_effect/default.css">
+<link rel="stylesheet" href="plugin/graph/default.css">
 </head>
 <body>
 	<main id="container">
-		<section style="margin:1000px auto;">
-			<img src="img/image.jpg" width="300" height="250" loading="lazy" class="scroll_effect" data-scroll-effect-animation-name="animatio_bounce" data-scroll-effect-animation-delay="2s">
-		</section>
-		<section style="margin:1000px auto;">
-			<img src="img/image.jpg" width="300" height="250" loading="lazy" class="scroll_effect" data-scroll-effect-animation-name="animatio_bounce" data-scroll-effect-animation-delay="2s" data-scroll-effect-animation-iteration-count="4">
-		</section>
+		<section id="graph"></section>
 	</main>
 	
 	<!-- lib -->
-	<script src="libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	
 	<!-- plugin -->
-	<script src="plugin/scroll_effect/jquery.scrollEffect.js"></script>
+	<script src="plugin/graph/jquery.graph.js"></script>
 	<script>
 (function($){
 	$(document).ready(function(){
 		const 
 		configs = {
-			elementTarget:'.scroll_effect' 		//対象の要素
+			items:{
+				ask:{
+					label:'グラフ0', 
+					values:{
+						4:0, 
+						5:1, 
+						6:2, 
+						10:6, 
+						11:7, 
+						12:8, 
+						13:9, 
+						14:10 
+					}, 
+					color:'#F00', 
+					lineStyle:[2, 2], 
+					weight:1, 
+					strong:{
+						6:{
+							end:11, 
+							color:'#0F0', 
+							weight:5, 
+							lineStyle:[2, 2] 
+						} 
+					}, 
+					eventTriggerClassName:'pl_graph_event_trigger_ask', 
+					event:[
+						{
+							label:6, 
+							args:[], 
+							callback:{
+								click:function(e, pos, keyItems, keyVerticalLabel, value){
+									console.log([pos, keyItems, keyVerticalLabel, value]);
+								}, 
+								mouseover:function(e, pos, keyItems, keyVerticalLabel, value){
+									console.log([pos, keyItems, keyVerticalLabel, value]);
+								}, 
+								mouseout:function(e, pos, keyItems, keyVerticalLabel, value){
+									console.log([pos, keyItems, keyVerticalLabel, value]);
+								} 
+							}
+						}, 
+						{
+							label:13, 
+							args:[], 
+							callback:{
+								click:function(e, pos, keyItems, keyVerticalLabel, value){
+									console.log([pos, keyItems, keyVerticalLabel, value]);
+								}, 
+								mouseover:function(e, pos, keyItems, keyVerticalLabel, value){
+									console.log([pos, keyItems, keyVerticalLabel, value]);
+								}, 
+								mouseout:function(e, pos, keyItems, keyVerticalLabel, value){
+									console.log([pos, keyItems, keyVerticalLabel, value]);
+								} 
+							}
+						}
+					] 
+				}, 
+				bid:{
+					label:'グラフ1', 
+					values:{
+						4:1, 
+						5:2, 
+						6:3, 
+						10:7, 
+						11:8, 
+						12:9, 
+						13:10, 
+						14:11 
+					}, 
+					color:'#00F', 
+					lineStyle:[2, 2], 
+					weight:1, 
+					eventTriggerClassName:'pl_graph_event_trigger_bid', 
+					event:[
+						{
+							label:7, 
+							args:[], 
+							callback:{
+								click:function(e, pos, keyItems, keyVerticalLabel, value){
+									console.log([pos, keyItems, keyVerticalLabel, value]);
+								}, 
+								mouseover:function(e, pos, keyItems, keyVerticalLabel, value){
+									console.log([pos, keyItems, keyVerticalLabel, value]);
+								}, 
+								mouseout:function(e, pos, keyItems, keyVerticalLabel, value){
+									console.log([pos, keyItems, keyVerticalLabel, value]);
+								} 
+							}
+						}, 
+						{
+							label:8, 
+							args:[], 
+							callback:{
+								click:function(e, pos, keyItems, keyVerticalLabel, value){
+									console.log([pos, keyItems, keyVerticalLabel, value]);
+								}, 
+								mouseover:function(e, pos, keyItems, keyVerticalLabel, value){
+									console.log([pos, keyItems, keyVerticalLabel, value]);
+								}, 
+								mouseout:function(e, pos, keyItems, keyVerticalLabel, value){
+									console.log([pos, keyItems, keyVerticalLabel, value]);
+								} 
+							}
+						}
+					] 
+				} 
+			}, 
+			marks:{
+				long:{
+					value:7, 
+					color:'#FF0', 
+					backgroundColor:'#CC0', 
+					weight:3, 
+					borderColor:'#CC0', 
+					style:[5, 5], 
+					label:'スケール0' 
+				}, 
+				short:{
+					value:20, 
+					color:'#FFF', 
+					backgroundColor:'#C00', 
+					weight:1, 
+					borderColor:'#C00', 
+					style:[5, 5], 
+					label:'スケール1' 
+				} 
+			}, 
+			//▼itemの配列番号と合わせる
+			verticalLabel:{
+				4:'a4', 
+				5:'a5', 
+				6:'a6', 
+				10:'a10', 
+				11:'a11', 
+				12:'a12', 
+				13:'a13', 
+				14:'a14' 
+			} 
 		};
-		$('.scroll_effect').scrollEffect(configs);
+		$('#graph').graph(configs);
 	});
 })(jQuery);
 	</script>
