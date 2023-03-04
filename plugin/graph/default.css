@@ -1,6 +1,15 @@
 @charset "utf-8";
 
 /*----------------------------- graph -----------------------------*/
+.pl_graph_vertical_line_parent{
+	width:calc(100% - 120px);
+	width:-ms-calc(100% - 120px);
+	width:-webkit-calc(100% - 120px);
+	width:-moz-calc(100% - 120px);
+	width:-o-calc(100% - 120px);
+	height:30px;
+}
+
 .pl_graph::after{
 	content:"";
 	display:block;
@@ -79,7 +88,8 @@
 }
 
 .pl_graph_item_navi_list::after, 
-.pl_graph_mark_navi_list::after{
+.pl_graph_mark_navi_list::after, 
+.pl_graph_vertical_line_navi_list::after{
 	content:"";
 	display:block;
 	clear:both;
@@ -88,23 +98,34 @@
 }
 
 .pl_graph_item_navi_list > li, 
-.pl_graph_mark_navi_list > li{
+.pl_graph_mark_navi_list > li, 
+.pl_graph_vertical_line_navi_list > li{
 	float:left;
 }
 
 .pl_graph_item_navi_trigger, 
-.pl_graph_mark_navi_trigger{
+.pl_graph_mark_navi_trigger, 
+.pl_graph_vertical_line_navi_trigger{
 	margin:0 5px;
 	font-size:14px;
 	line-height:20px;
 }
 
 .pl_graph_item_navi_trigger > *, 
-.pl_graph_mark_navi_trigger > *{
+.pl_graph_mark_navi_trigger > *, 
+.pl_graph_vertical_line_navi_trigger > *{
 	cursor:pointer;
 }
 
 @media screen and (max-width:950px){
+	.pl_graph_vertical_line_parent{
+		width:calc(100% - 90px);
+		width:-ms-calc(100% - 90px);
+		width:-webkit-calc(100% - 90px);
+		width:-moz-calc(100% - 90px);
+		width:-o-calc(100% - 90px);
+	}
+	
 	.pl_graph_parent{
 		width:calc(100% - 90px);
 		width:-ms-calc(100% - 90px);
