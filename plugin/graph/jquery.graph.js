@@ -320,56 +320,56 @@
 			verticalLineHeightRatio:0, 
 			displayItemsShiftCount:0, 
 			displayItemsShowCount:0 
-		};
+		}, 
 		//初期実行用関数
-		el.funcInit = () => {
+		funcInit = () => {
 			configs = $.extend(
 				{}, 
 				defaults, 
 				options 
 			);
-			el.funcPutElementsParent();
-			el.funcPutVarLocalInit();
-			el.funcPutVarLocal();
-			el.funcPutSideNumber();
-			el.funcPutVerticalLabel();
-			el.funcPutGraph();
-			el.funcPutMark();
-			el.funcPutVerticalLine();
-			el.funcAddEventListener0();
-			el.funcCustomEvents();
-			el.funcDestructor();
+			funcPutElementsParent();
+			funcPutVarLocalInit();
+			funcPutVarLocal();
+			funcPutSideNumber();
+			funcPutVerticalLabel();
+			funcPutGraph();
+			funcPutMark();
+			funcPutVerticalLine();
+			funcAddEventListener0();
+			funcCustomEvents();
+			funcDestructor();
 		}, 
 		//不要メモリー開放用関数
-		el.funcDestructor = () => {
+		funcDestructor = () => {
 			lenEl = 
-			el.funcInit = 
-			el.funcPutElementsParent = 
-			el.funcAddEventListener0 = 
-			el.funcCustomEvents = 
-			el.funcDestructor = void 0;
+			funcInit = 
+			funcPutElementsParent = 
+			funcAddEventListener0 = 
+			funcCustomEvents = 
+			funcDestructor = void 0;
 		}, 
 		//グラフプラグイン削除用関数
-		el.funcDestroy = () => {
+		funcDestroy = () => {
 			$(window).off('resize.graph');
 			el
 			.empty()
 			.off();
 		}, 
 		//カスタムイベント追加用関数
-		el.funcCustomEvents = () => {
+		funcCustomEvents = () => {
 			el.on({
 				'graph.addItems':(
 					e, 
 					args 
 				) => {
 					const 
-					currentLabel = el.funcGetCurrentLabel();
-					el.funcPutConfigsAddItems(
+					currentLabel = funcGetCurrentLabel();
+					funcPutConfigsAddItems(
 						args, 
 						currentLabel 
 					);
-					el.funcResetGraph();
+					funcResetGraph();
 				}, 
 				'graph.reset':(
 					e, 
@@ -381,68 +381,68 @@
 						args.configs 
 					);
 					if(args.flagVarLocalInit)
-					el.funcPutVarLocalInit();
-					el.funcResetGraph();
+					funcPutVarLocalInit();
+					funcResetGraph();
 				}, 
 				'graph.itemHide':(
 					e, 
 					item 
 				) => {
-					el.funcItemHide(item);
+					funcItemHide(item);
 				}, 
 				'graph.itemShow':(
 					e, 
 					item 
 				) => {
-					el.funcItemShow(item);
+					funcItemShow(item);
 				}, 
 				'graph.itemToggle':(
 					e, 
 					item 
 				) => {
-					el.funcItemToggle(item);
+					funcItemToggle(item);
 				}, 
 				'graph.markHide':(
 					e, 
 					mark 
 				) => {
-					el.funcMarkHide(mark);
+					funcMarkHide(mark);
 				}, 
 				'graph.markShow':(
 					e, 
 					mark 
 				) => {
-					el.funcMarkShow(mark);
+					funcMarkShow(mark);
 				}, 
 				'graph.markToggle':(
 					e, 
 					mark 
 				) => {
-					el.funcMarkToggle(mark);
+					funcMarkToggle(mark);
 				}, 
 				'graph.verticalLineHide':(
 					e, 
 					verticalLine 
 				) => {
-					el.funcVerticalLineHide(verticalLine);
+					funcVerticalLineHide(verticalLine);
 				}, 
 				'graph.verticalLineShow':(
 					e, 
 					verticalLine 
 				) => {
-					el.funcVerticalLineShow(verticalLine);
+					funcVerticalLineShow(verticalLine);
 				}, 
 				'graph.verticalLineToggle':(
 					e, 
 					verticalLine 
 				) => {
-					el.funcVerticalLineToggle(verticalLine);
+					funcVerticalLineToggle(verticalLine);
 				}, 
 				'graph.zoom':(
 					e, 
 					vector 
 				) => {
-					el.funcZoomGraph(vector);
+					funcZoomGraph(vector);
 				}, 
 				'graph.shift':(
 					e, 
@@ -451,7 +451,7 @@
 					const 
 					shiftSliceCount = configs.displayItemsShiftMovementWidthCount > varLocal.displayItemsShowCount?varLocal.displayItemsShowCount:configs.displayItemsShiftMovementWidthCount, 
 					shiftCount = Math.floor(varLocal.displayItemsShowCount / shiftSliceCount);
-					el.funcShiftGraph(
+					funcShiftGraph(
 						vector, 
 						shiftCount 
 					);
@@ -461,7 +461,7 @@
 					x, 
 					y 
 				) => {
-					el.funcPutGridLine(
+					funcPutGridLine(
 						x, 
 						y 
 					);
@@ -470,22 +470,22 @@
 					e, 
 					arrLayer 
 				) => {
-					el.funcClearCanvas(arrLayer);
+					funcClearCanvas(arrLayer);
 				}, 
 				'graph.destroy':(e) => {
-					el.funcDestroy();
+					funcDestroy();
 				} 
 			});
 		}, 
 		//カンマを使用した数値フォーマット変換用関数
-		el.funcNumberFormat = (number) => {
+		funcNumberFormat = (number) => {
 			number = number.toString();
 			const 
 			arrNumber = number.split('.');
 			return arrNumber[0].replace(/([0-9]+?)(?=(?:[0-9]{3})+$)/g , '$1,') + (typeof arrNumber[1] === 'string'?'.' + arrNumber[1]:'');
 		}, 
 		//カーソルの位置からラベル取得用関数
-		el.funcVerticalLabelPositionObjectKey = (
+		funcVerticalLabelPositionObjectKey = (
 			verticalLabel, 
 			cursorPosX 
 		) => {
@@ -499,7 +499,7 @@
 			return false;
 		}, 
 		//グラフの値の最小値と最大値取得用関数
-		el.funcGetItemsLimitValue = () => {
+		funcGetItemsLimitValue = () => {
 			let 
 			itemsLimitValue = {
 				min:Infinity, 
@@ -549,7 +549,7 @@
 			return itemsLimitValue;
 		}, 
 		//文字列バイト数取得用関数
-		el.funcGetStringByte = (string) => {
+		funcGetStringByte = (string) => {
 			let 
 			len = 0;
 			for(var i = 0, l = string.length;i < l;++i)
@@ -557,28 +557,28 @@
 			return len;
 		}, 
 		//文字の幅取得用関数
-		el.funcGetStrOuterWidth = (
+		funcGetStrOuterWidth = (
 			verticalLabelByte, 
 			margin 
 		) => {
 			return (verticalLabelByte * configs.fontSize * varGlobal.fontRatio) + (margin * 2);
 		}, 
-		el.funcGetVerticalLabelMaxOuterWidth = () => {
+		funcGetVerticalLabelMaxOuterWidth = () => {
 			let 
 			verticalLabelMaxByte = 0;
 			for(var keyVerticalLabel in varLocal.verticalLabel){
 				let 
-				verticalLabelByte = el.funcGetStringByte(varLocal.verticalLabel[keyVerticalLabel]);
+				verticalLabelByte = funcGetStringByte(varLocal.verticalLabel[keyVerticalLabel]);
 				if(verticalLabelMaxByte < verticalLabelByte)
 				verticalLabelMaxByte = verticalLabelByte;
 			}
-			return el.funcGetStrOuterWidth(verticalLabelMaxByte, configs.verticalLabelMargin);
+			return funcGetStrOuterWidth(verticalLabelMaxByte, configs.verticalLabelMargin);
 		}, 
-		el.funcGetVerticalLabelCount = () => {
+		funcGetVerticalLabelCount = () => {
 			return Math.floor(varLocal.graphWidth / varLocal.verticalLabelMaxOuterWidth);
 		}, 
 		//object型のデータ分割用関数
-		el.funcSliceObject = (
+		funcSliceObject = (
 			object, 
 			start, 
 			end 
@@ -591,23 +591,23 @@
 			newObject[arrKeysObject[i]] = arrValuesObject[i];
 			return newObject;
 		}, 
-		el.funcGetSliceVerticalLabel = () => {
+		funcGetSliceVerticalLabel = () => {
 			const 
 			lenVerticalLabel = Object.values(configs.verticalLabel).length, 
 			objectEnd = lenVerticalLabel - varLocal.displayItemsShiftCount, 
 			objectStart = objectEnd - varLocal.displayItemsShowCount;
-			return el.funcSliceObject(
+			return funcSliceObject(
 				configs.verticalLabel, 
 				objectStart, 
 				objectEnd 
 			);
 		}, 
 		//マウスホイール実行取得用関数
-		el.funcGetWheelDelta = (e) => {
+		funcGetWheelDelta = (e) => {
 			return e.originalEvent.deltaY?-(e.originalEvent.deltaY):e.originalEvent.wheelDelta?e.originalEvent.wheelDelta:-(e.originalEvent.detail);
 		}, 
 		//イベントリスナー追加用関数0
-		el.funcAddEventListener0 = () => {
+		funcAddEventListener0 = () => {
 			const 
 			win = $(window), 
 			elePlGraphLayer2 = $('> .pl_graph_parent:eq(0) > canvas:nth-of-type(2)', el), 
@@ -618,7 +618,7 @@
 							e.offsetX, 
 							e.offsetY 
 						);
-						el.funcPutGridLine(
+						funcPutGridLine(
 							e.offsetX, 
 							e.offsetY 
 						);
@@ -627,7 +627,7 @@
 				mouseout:{
 					default:(e) => {
 						configs.callbackMouseoutDefault();
-						el.funcClearCanvas([2]);
+						funcClearCanvas([2]);
 					} 
 				}, 
 				mouseup:{
@@ -648,9 +648,9 @@
 				'wheel':(e) => {
 					e.preventDefault();
 					const 
-					vector = el.funcGetWheelDelta(e) < 0?'down':'up';
+					vector = funcGetWheelDelta(e) < 0?'down':'up';
 					configs.callbackWheelZoomStart(vector);
-					el.funcZoomGraph(vector);
+					funcZoomGraph(vector);
 					configs.callbackWheelZoomEnd(vector);
 				}, 
 				'gesturemove':(e) => {
@@ -658,7 +658,7 @@
 					const 
 					vector = e.scale < 1?'down':'up';
 					configs.callbackWheelZoomStart(vector);
-					el.funcZoomGraph(vector);
+					funcZoomGraph(vector);
 					configs.callbackWheelZoomEnd(vector);
 				}, 
 				'mousedown':(e) => {
@@ -670,7 +670,7 @@
 					verticalLabelSizeNext = movementWidth, 
 					verticalLabelSizePrev = verticalLabelSizeNext * -1, 
 					shiftCount = Math.floor(varLocal.displayItemsShowCount / shiftSliceCount);
-					el.funcClearCanvas([2]);
+					funcClearCanvas([2]);
 					elePlGraphLayer2
 					.off('mousemove.default mouseout.default')
 					.on({
@@ -681,7 +681,7 @@
 								const 
 								vector = 'down';
 								configs.callbackMousemoveShiftStart(vector);
-								el.funcShiftGraph(
+								funcShiftGraph(
 									vector, 
 									shiftCount 
 								);
@@ -692,7 +692,7 @@
 								const 
 								vector = 'up';
 								configs.callbackMousemoveShiftStart(vector);
-								el.funcShiftGraph(
+								funcShiftGraph(
 									vector, 
 									shiftCount 
 								);
@@ -714,7 +714,7 @@
 					verticalLabelSizeNext = movementWidth, 
 					verticalLabelSizePrev = verticalLabelSizeNext * -1, 
 					shiftCount = Math.floor(varLocal.displayItemsShowCount / shiftSliceCount);
-					el.funcClearCanvas([2]);
+					funcClearCanvas([2]);
 					elePlGraphLayer2
 					.on({
 						'touchmove':(e) => {
@@ -725,7 +725,7 @@
 								const 
 								vector = 'down';
 								configs.callbackTouchmoveStart(vector);
-								el.funcShiftGraph(
+								funcShiftGraph(
 									vector, 
 									shiftCount 
 								);
@@ -736,7 +736,7 @@
 								const 
 								vector = 'up';
 								configs.callbackTouchmoveStart(vector);
-								el.funcShiftGraph(
+								funcShiftGraph(
 									vector, 
 									shiftCount 
 								);
@@ -753,8 +753,8 @@
 					clearTimeout(varLocal.windowResizeTimer);
 					varLocal.windowResizeTimer = setTimeout(
 						() => {
-							el.funcResizeElementsCanvas();
-							el.funcResetGraph();
+							funcResizeElementsCanvas();
+							funcResetGraph();
 						}, 
 						configs.windowResizeTime 
 					);
@@ -762,7 +762,7 @@
 			});
 		}, 
 		//イベントリスナー追加用関数1
-		el.funcAddEventListener1 = () => {
+		funcAddEventListener1 = () => {
 			const 
 			elePlGraphItemNaviTrigger = $('.pl_graph_item_navi_trigger', el);
 			elePlGraphItemNaviTrigger
@@ -770,12 +770,12 @@
 				'click':function(){
 					const 
 					dataItem = $(this).attr('data-item');
-					el.funcItemToggle(dataItem);
+					funcItemToggle(dataItem);
 				} 
 			});
 		}, 
 		//イベントリスナー追加用関数2
-		el.funcAddEventListener2 = () => {
+		funcAddEventListener2 = () => {
 			const 
 			elePlGraphMarkNaviTrigger = $('.pl_graph_mark_navi_trigger', el);
 			elePlGraphMarkNaviTrigger
@@ -783,12 +783,12 @@
 				'click':function(){
 					const 
 					dataMark = $(this).attr('data-mark');
-					el.funcMarkToggle(dataMark);
+					funcMarkToggle(dataMark);
 				} 
 			});
 		}, 
 		//イベントリスナー追加用関数3
-		el.funcAddEventListener3 = () => {
+		funcAddEventListener3 = () => {
 			const 
 			elePlGraphVerticalLineNaviTrigger = $('.pl_graph_vertical_line_navi_trigger', el);
 			elePlGraphVerticalLineNaviTrigger
@@ -796,12 +796,12 @@
 				'click':function(){
 					const 
 					dataVerticalLine = $(this).attr('data-vertical-line');
-					el.funcVerticalLineToggle(dataVerticalLine);
+					funcVerticalLineToggle(dataVerticalLine);
 				} 
 			});
 		}, 
 		//グラフ線非表示用関数
-		el.funcItemHide = (item) => {
+		funcItemHide = (item) => {
 			const 
 			keyItem = $.inArray(
 				item, 
@@ -813,10 +813,10 @@
 			)
 			return false;
 			varLocal.itemsHide.push(item);
-			el.funcResetGraph();
+			funcResetGraph();
 		}, 
 		//グラフ線表示用関数
-		el.funcItemShow = (item) => {
+		funcItemShow = (item) => {
 			const 
 			keyItem = $.inArray(
 				item, 
@@ -828,10 +828,10 @@
 				keyItem, 
 				1 
 			);
-			el.funcResetGraph();
+			funcResetGraph();
 		}, 
 		//グラフ線表示非表示切り替え用関数
-		el.funcItemToggle = (item) => {
+		funcItemToggle = (item) => {
 			const 
 			keyItem = $.inArray(
 				item, 
@@ -845,10 +845,10 @@
 					1 
 				);
 			}
-			el.funcResetGraph();
+			funcResetGraph();
 		}, 
 		//マーク線非表示用関数
-		el.funcMarkHide = (mark) => {
+		funcMarkHide = (mark) => {
 			const 
 			keyMark = $.inArray(
 				mark, 
@@ -860,10 +860,10 @@
 			)
 			return false;
 			varLocal.marksHide.push(mark);
-			el.funcResetGraph();
+			funcResetGraph();
 		}, 
 		//マーク線表示用関数
-		el.funcMarkShow = (mark) => {
+		funcMarkShow = (mark) => {
 			const 
 			keyMark = $.inArray(
 				mark, 
@@ -875,10 +875,10 @@
 				keyMark, 
 				1 
 			);
-			el.funcResetGraph();
+			funcResetGraph();
 		}, 
 		//マーク線表示非表示切り替え用関数
-		el.funcMarkToggle = (mark) => {
+		funcMarkToggle = (mark) => {
 			const 
 			keyMark = $.inArray(
 				mark, 
@@ -892,10 +892,10 @@
 					1 
 				);
 			}
-			el.funcResetGraph();
+			funcResetGraph();
 		}, 
 		//縦線非表示用関数
-		el.funcVerticalLineHide = (verticalLine) => {
+		funcVerticalLineHide = (verticalLine) => {
 			const 
 			keyVerticalLine = $.inArray(
 				verticalLine, 
@@ -907,10 +907,10 @@
 			)
 			return false;
 			varLocal.verticalLineHide.push(verticalLine);
-			el.funcResetGraph();
+			funcResetGraph();
 		}, 
 		//縦線表示用関数
-		el.funcVerticalLineShow = (verticalLine) => {
+		funcVerticalLineShow = (verticalLine) => {
 			const 
 			keyVerticalLine = $.inArray(
 				verticalLine, 
@@ -922,10 +922,10 @@
 				keyVerticalLine, 
 				1 
 			);
-			el.funcResetGraph();
+			funcResetGraph();
 		}, 
 		//縦線表示非表示切り替え用関数
-		el.funcVerticalLineToggle = (verticalLine) => {
+		funcVerticalLineToggle = (verticalLine) => {
 			const 
 			keyVerticalLine = $.inArray(
 				verticalLine, 
@@ -939,10 +939,10 @@
 					1 
 				);
 			}
-			el.funcResetGraph();
+			funcResetGraph();
 		}, 
 		//グラフ拡大縮小用関数
-		el.funcZoomGraph = (vector) => {
+		funcZoomGraph = (vector) => {
 			const 
 			lenVerticalLabel = Object.values(configs.verticalLabel).length, 
 			displayItemsShowLimit = lenVerticalLabel - varLocal.displayItemsShiftCount, 
@@ -950,21 +950,21 @@
 			newDisplayItemsShowCount = varLocal.displayItemsShowCount + ((vector === 'up'?-1:1) * (zoomIncrement < 1?1:zoomIncrement));
 			if(newDisplayItemsShowCount < varGlobal.displayItemsShowMinCount){
 				varLocal.displayItemsShowCount = varGlobal.displayItemsShowMinCount;
-				el.funcResetGraph();
+				funcResetGraph();
 				configs.callbackZoomMinItem();
 				return false;
 			}
 			if(newDisplayItemsShowCount > displayItemsShowLimit){
 				varLocal.displayItemsShowCount = displayItemsShowLimit;
-				el.funcResetGraph();
+				funcResetGraph();
 				configs.callbackZoomMaxItem();
 				return false;
 			}
 			varLocal.displayItemsShowCount = newDisplayItemsShowCount;
-			el.funcResetGraph();
+			funcResetGraph();
 		}, 
 		//グラフ横移動用関数
-		el.funcShiftGraph = (
+		funcShiftGraph = (
 			vector, 
 			shiftCount 
 		) => {
@@ -974,35 +974,35 @@
 			newDisplayItemsShiftCount = varLocal.displayItemsShiftCount + (shiftCount * (vector === 'up'?1:-1));
 			if(newDisplayItemsShiftCount > displayItemsShiftLimit){
 				varLocal.displayItemsShiftCount = displayItemsShiftLimit;
-				el.funcResetGraph();
+				funcResetGraph();
 				configs.callbackShiftFirstItem();
 				return false;
 			}
 			if(newDisplayItemsShiftCount < 0){
 				varLocal.displayItemsShiftCount = 0;
-				el.funcResetGraph();
+				funcResetGraph();
 				configs.callbackShiftLastItem();
 				return false;
 			}
 			varLocal.displayItemsShiftCount = newDisplayItemsShiftCount;
-			el.funcResetGraph();
+			funcResetGraph();
 		}, 
 		//グラフリセット用関数
-		el.funcResetGraph = () => {
-			el.funcPutVarLocal();
-			el.funcClearCanvas();
-			el.funcClearEvent();
-			el.funcPutSideNumber();
-			el.funcPutVerticalLabel();
-			el.funcPutGraph();
-			el.funcPutMark();
-			el.funcPutVerticalLine();
-			el.funcPutElementsItemNavi();
-			el.funcPutElementsMarkNavi();
-			el.funcPutElementsVerticalLineNavi();
+		funcResetGraph = () => {
+			funcPutVarLocal();
+			funcClearCanvas();
+			funcClearEvent();
+			funcPutSideNumber();
+			funcPutVerticalLabel();
+			funcPutGraph();
+			funcPutMark();
+			funcPutVerticalLine();
+			funcPutElementsItemNavi();
+			funcPutElementsMarkNavi();
+			funcPutElementsVerticalLineNavi();
 		}, 
 		//グラフ線のナビ設置用関数
-		el.funcPutElementsItemNavi = () => {
+		funcPutElementsItemNavi = () => {
 			if(configs.itemsNaviDisplay === false)
 			return false;
 			const 
@@ -1024,10 +1024,10 @@
 					</li>\
 				');
 			}
-			el.funcAddEventListener1();
+			funcAddEventListener1();
 		}, 
 		//マーク線のナビ設置用関数
-		el.funcPutElementsMarkNavi = () => {
+		funcPutElementsMarkNavi = () => {
 			if(configs.marksNaviDisplay === false)
 			return false;
 			const 
@@ -1049,10 +1049,10 @@
 					</li>\
 				');
 			}
-			el.funcAddEventListener2();
+			funcAddEventListener2();
 		}, 
 		//縦線のナビ設置用関数
-		el.funcPutElementsVerticalLineNavi = () => {
+		funcPutElementsVerticalLineNavi = () => {
 			if(configs.verticalLineDisplay === false)
 			return false;
 			const 
@@ -1074,10 +1074,10 @@
 					</li>\
 				');
 			}
-			el.funcAddEventListener3();
+			funcAddEventListener3();
 		}, 
 		//グラフの描写に必要な要素設置用関数
-		el.funcPutElementsParent = () => {
+		funcPutElementsParent = () => {
 			el.empty();
 			if(configs.verticalLineDisplay)
 			el.append('<div class="pl_graph_vertical_line_parent" />');
@@ -1157,12 +1157,12 @@
 					<canvas width="' + verticalLabelWidthRatio + '" height="' + verticalLabelHeightRatio + '" style="width:' + verticalLabelWidth + 'px; height:' + verticalLabelHeight + 'px;"></canvas>\
 				');
 			}
-			el.funcPutElementsItemNavi();
-			el.funcPutElementsMarkNavi();
-			el.funcPutElementsVerticalLineNavi();
+			funcPutElementsItemNavi();
+			funcPutElementsMarkNavi();
+			funcPutElementsVerticalLineNavi();
 		}, 
 		//canvasタグのリサイズ用関数
-		el.funcResizeElementsCanvas = () => {
+		funcResizeElementsCanvas = () => {
 			const 
 			elePlGraphParent = $('> .pl_graph_parent', el).eq(0), 
 			elePlGraphCanvas = $('> canvas', elePlGraphParent), 
@@ -1225,14 +1225,14 @@
 			}
 		}, 
 		//現在表示されているラベル表示用関数
-		el.funcGetCurrentLabel = () => {
+		funcGetCurrentLabel = () => {
 			const 
 			arrKeysVerticalLabel = Object.keys(varLocal.verticalLabel), 
 			lenKeysVerticalLabel = arrKeysVerticalLabel.length, 
 			currentIndex = (lenKeysVerticalLabel - 1) - varLocal.displayItemsShiftCount;
 			return arrKeysVerticalLabel[currentIndex];
 		}, 
-		el.funcPutConfigsAddItems = (
+		funcPutConfigsAddItems = (
 			configsItems, 
 			currentLabel 
 		) => {
@@ -1265,7 +1265,7 @@
 				configs.displayItemsShiftCount = newDisplayItemsShiftCount === -1?0:newDisplayItemsShiftCount;
 			}
 		}, 
-		el.funcPutVarLocalInit = () => {
+		funcPutVarLocalInit = () => {
 			varLocal.itemsHide = $.extend(
 				[], 
 				configs.itemsHide, 
@@ -1291,7 +1291,7 @@
 				varLocal.displayItemsShowCount = configs.displayItemsShowCount;
 			}
 		}, 
-		el.funcPutVarLocal = () => {
+		funcPutVarLocal = () => {
 			const 
 			elePlGraph = $('> .pl_graph_parent:eq(0) > canvas', el).eq(0), 
 			elePlGraphVerticalLabel = $('> .pl_graph_vertical_label_parent:eq(0) > canvas', el).eq(0), 
@@ -1316,11 +1316,11 @@
 			//ラベルの縦幅比率修正
 			varLocal.verticalLabelHeightRatio = elePlGraphVerticalLabel.height() * configs.canvasRatio;
 			//ラベル
-			varLocal.verticalLabel = el.funcGetSliceVerticalLabel();
+			varLocal.verticalLabel = funcGetSliceVerticalLabel();
 			//ラベルの最大横幅
-			varLocal.verticalLabelMaxOuterWidth = el.funcGetVerticalLabelMaxOuterWidth();
+			varLocal.verticalLabelMaxOuterWidth = funcGetVerticalLabelMaxOuterWidth();
 			//ラベルの表示数
-			varLocal.verticalLabelCount = el.funcGetVerticalLabelCount();
+			varLocal.verticalLabelCount = funcGetVerticalLabelCount();
 			//サイド数値の横幅比率修正
 			varLocal.sideNumberWidthRatio = elePlGraphSideNumber.width() * configs.canvasRatio;
 			//サイド数値の縦幅比率修正
@@ -1330,10 +1330,10 @@
 			//縦線の縦幅比率修正
 			varLocal.verticalLineHeightRatio = elePlGraphVerticalLine.height() * configs.canvasRatio;
 			//アイテムの最小値・最大値
-			varLocal.itemsLimitValue = el.funcGetItemsLimitValue();
+			varLocal.itemsLimitValue = funcGetItemsLimitValue();
 		}, 
 		//横側グラフ数値表記用関数
-		el.funcPutSideNumber = () => {
+		funcPutSideNumber = () => {
 			if(configs.sideNumberDisplay === false)
 			return false;
 			const 
@@ -1369,7 +1369,7 @@
 				positionYSideNumber = ((varLocal.graphHeight - varLocal.graphMarginBottom) - i * sideNumberSize) * configs.canvasRatio;
 				//数値表記
 				canvasSideNumber.fillText(
-					el.funcNumberFormat(sideNumber) + configs.sideNumberUnit, 
+					funcNumberFormat(sideNumber) + configs.sideNumberUnit, 
 					configs.sideNumberIndent, 
 					positionYSideNumber 
 				);
@@ -1396,7 +1396,7 @@
 			}
 		}, 
 		//ラベル表記用関数
-		el.funcPutVerticalLabel = () => {
+		funcPutVerticalLabel = () => {
 			let 
 			elePlGraphVerticalLabel = $('> .pl_graph_vertical_label_parent:eq(0) > canvas', el), 
 			lenVerticalLabel = Object.values(varLocal.verticalLabel).length, 
@@ -1430,7 +1430,7 @@
 					//ラベル表記
 					canvasVerticalLabel.fillText(
 						varLocal.verticalLabel[keyVerticalLabel], 
-						positionXVerticalLabel - (el.funcGetStrOuterWidth(el.funcGetStringByte(varLocal.verticalLabel[keyVerticalLabel]), configs.verticalLabelMargin) / 2) + configs.verticalLabelMargin, 
+						positionXVerticalLabel - (funcGetStrOuterWidth(funcGetStringByte(varLocal.verticalLabel[keyVerticalLabel]), configs.verticalLabelMargin) / 2) + configs.verticalLabelMargin, 
 						positionYVerticalLabel 
 					);
 					//ラベル位置
@@ -1445,7 +1445,7 @@
 			}
 		}, 
 		//定規表記用関数
-		el.funcPutGridLine = (
+		funcPutGridLine = (
 			cursorPosX, 
 			cursorPosY 
 		) => {
@@ -1496,7 +1496,7 @@
 				canvasSideNumberLayer2 = elePlSideNumberLayer2.get(0).getContext('2d'), 
 				graphHeightRatio = varLocal.itemsLimitValue.difference / (varLocal.graphInnerHeight * configs.canvasRatio), 
 				sideNumber = (((graphHeightRatio * cursorPosY) - varLocal.itemsLimitValue.max) - (graphHeightRatio * varLocal.graphMarginTop * configs.canvasRatio)) * -1, 
-				rectWidth = el.funcGetStrOuterWidth(el.funcGetStringByte(el.funcNumberFormat(sideNumber)), configs.cursorRulerPadding), 
+				rectWidth = funcGetStrOuterWidth(funcGetStringByte(funcNumberFormat(sideNumber)), configs.cursorRulerPadding), 
 				rectHeight = configs.fontSize * 2;
 				
 				canvasSideNumberLayer2.clearRect(0, 0, varLocal.sideNumberWidthRatio, varLocal.sideNumberHeightRatio);
@@ -1516,7 +1516,7 @@
 				canvasSideNumberLayer2.fillStyle = configs.cursorRulerColor;
 				//数値表記
 				canvasSideNumberLayer2.fillText(
-					el.funcNumberFormat(sideNumber) + configs.sideNumberUnit, 
+					funcNumberFormat(sideNumber) + configs.sideNumberUnit, 
 					configs.sideNumberIndent, 
 					cursorPosY + ((configs.fontSize * configs.canvasRatio) / 4) 
 				);
@@ -1530,7 +1530,7 @@
 			){
 				const 
 				canvasVerticalLabelLayer2 = elePlVerticalLabelLayer2.get(0).getContext('2d'), 
-				verticalLabelPositionKey = el.funcVerticalLabelPositionObjectKey(varLocal.verticalLabelPosition, cursorPosX);
+				verticalLabelPositionKey = funcVerticalLabelPositionObjectKey(varLocal.verticalLabelPosition, cursorPosX);
 				
 				canvasVerticalLabelLayer2.clearRect(0, 0, varLocal.verticalLabelWidthRatio, varLocal.verticalLabelHeightRatio);
 				if(
@@ -1538,7 +1538,7 @@
 					typeof varLocal.verticalLabel[verticalLabelPositionKey] !== 'undefined' 
 				){
 					const 
-					rectWidth = el.funcGetStrOuterWidth(el.funcGetStringByte(varLocal.verticalLabel[verticalLabelPositionKey]), configs.cursorRulerPadding), 
+					rectWidth = funcGetStrOuterWidth(funcGetStringByte(varLocal.verticalLabel[verticalLabelPositionKey]), configs.cursorRulerPadding), 
 					rectHeight = configs.fontSize * 2;
 					//背景四角
 			    	canvasVerticalLabelLayer2.beginPath();
@@ -1565,7 +1565,7 @@
 			}
 		}, 
 		//canvasタグ初期化用関数
-		el.funcClearCanvas = (arrLayer) => {
+		funcClearCanvas = (arrLayer) => {
 			if(typeof arrLayer === 'undefined')
 			arrLayer = [1, 2];
 			for(var i = 0, l = arrLayer.length;i < l;++i){
@@ -1638,12 +1638,12 @@
 				}
 			}
 		}, 
-		el.funcClearEvent = () => {
+		funcClearEvent = () => {
 			const 
 			elePlGraphEventTrigger = $(selectorRule.class + configs.graphEventTriggerClassName, el);
 			elePlGraphEventTrigger.remove();
 		}, 
-		el.funcPutGraph = () => {
+		funcPutGraph = () => {
 			const 
 			elePlGraphParent = $('> .pl_graph_parent:eq(0)', el), 
 			elePlGraph = $('> canvas', elePlGraphParent);
@@ -1824,7 +1824,7 @@
 				}
 			}
 		}, 
-		el.funcPutMark = () => {
+		funcPutMark = () => {
 			const 
 			elePlGraphSideNumber = $('> .pl_graph_side_number_parent:eq(0) > canvas', el), 
 			elePlGraph = $('> .pl_graph_parent:eq(0) > canvas', el);
@@ -1845,7 +1845,7 @@
 				let 
 				graphDisplayRatioHeight = varLocal.graphInnerHeight / varLocal.itemsLimitValue.difference, 
 				markPosY = (((varLocal.itemsLimitValue.max - configs.marks[keyMarks].value) * graphDisplayRatioHeight) + varLocal.graphMarginTop) * configs.canvasRatio, 
-				rectWidth = el.funcGetStrOuterWidth(el.funcGetStringByte(el.funcNumberFormat(configs.marks[keyMarks].value)), configs.cursorRulerPadding), 
+				rectWidth = funcGetStrOuterWidth(funcGetStringByte(funcNumberFormat(configs.marks[keyMarks].value)), configs.cursorRulerPadding), 
 				rectHeight = configs.fontSize * 2;
 				//背景四角
 		    	canvasSideNumber.beginPath();
@@ -1864,7 +1864,7 @@
 				canvasSideNumber.fillStyle = configs.marks[keyMarks].color;
 				canvasSideNumber.strokeStyle = configs.marks[keyMarks].color;
 				canvasSideNumber.fillText(
-					el.funcNumberFormat(configs.marks[keyMarks].value), 
+					funcNumberFormat(configs.marks[keyMarks].value), 
 					configs.sideNumberIndent, 
 					markPosY + ((configs.fontSize * configs.canvasRatio) / 4) 
 				);
@@ -1893,7 +1893,7 @@
 			}
 			*/
 		}, 
-		el.funcPutVerticalLine = () => {
+		funcPutVerticalLine = () => {
 			const 
 			elePlGraphVerticalLine = $('> .pl_graph_vertical_line_parent:eq(0) > canvas', el), 
 			elePlGraph = $('> .pl_graph_parent:eq(0) > canvas', el);
@@ -1916,7 +1916,7 @@
 				continue;
 				let 
 				verticalLinePosX = varLocal.verticalLabelPosition[keyVerticalLine], 
-				rectWidth = el.funcGetStrOuterWidth(el.funcGetStringByte(el.funcNumberFormat(configs.verticalLine[keyVerticalLine].label)), configs.cursorRulerPadding), 
+				rectWidth = funcGetStrOuterWidth(funcGetStringByte(funcNumberFormat(configs.verticalLine[keyVerticalLine].label)), configs.cursorRulerPadding), 
 				rectHeight = configs.fontSize * 2;
 				//背景四角
 		    	canvasVerticalLine.beginPath();
@@ -1935,7 +1935,7 @@
 				canvasVerticalLine.fillStyle = configs.verticalLine[keyVerticalLine].color;
 				canvasVerticalLine.strokeStyle = configs.verticalLine[keyVerticalLine].color;
 				canvasVerticalLine.fillText(
-					el.funcNumberFormat(configs.verticalLine[keyVerticalLine].label), 
+					funcNumberFormat(configs.verticalLine[keyVerticalLine].label), 
 					verticalLinePosX - rectWidth / 2 + configs.cursorRulerPadding, 
 					rectHeight / 2 + ((configs.fontSize * configs.canvasRatio) / 4) 
 				);
@@ -1970,7 +1970,7 @@
 			}
 			*/
 		};
-		el.funcInit();
+		funcInit();
 		return this;
 	};
 })(jQuery);
